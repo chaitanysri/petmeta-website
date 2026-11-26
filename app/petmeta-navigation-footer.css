@@ -1,0 +1,20 @@
+/* PetMeta navigation and footer corrections */
+.delivery-home .shop-mega-group-title-link{width:100%;display:flex;align-items:center;justify-content:space-between;padding:7px 0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#242018!important;font-weight:800!important;font-size:17px!important;text-align:left}
+.delivery-home .shop-mega-group-title-link:hover,.delivery-home .shop-mega-group-title-link:focus-visible{color:#ba5200!important;text-decoration:underline}
+.delivery-home .shop-mega-group>button:not(.shop-mega-group-title-link){display:flex;align-items:center;min-height:31px;border:0!important;border-radius:4px!important;background:transparent!important;box-shadow:none!important;padding:6px 4px!important;font-weight:500!important;line-height:1.4}
+.delivery-home .shop-mega-group>button:not(.shop-mega-group-title-link):hover{background:transparent!important;box-shadow:none!important;color:#d84f00!important}
+.delivery-home .account-menu{padding:8px!important;border-radius:14px!important;box-shadow:0 12px 34px #271c001f!important;background:#fffdf4!important}
+.delivery-home .account-menu button,.delivery-home .account-menu a{display:flex!important;width:100%;align-items:center;border:0!important;box-shadow:none!important;background:transparent!important;text-align:left!important;border-radius:5px!important;padding:10px 12px!important;font-size:13px!important}
+.delivery-home .account-menu button:hover,.delivery-home .account-menu a:hover{background:transparent!important;box-shadow:none!important;color:#d84f00!important}
+.pm-home-category-strip{max-width:1380px;margin:18px auto 26px;padding:22px clamp(20px,4vw,50px);background:linear-gradient(110deg,#fff5bd,#ffdc42);border-radius:26px;box-shadow:0 9px 22px #c5810020}
+.pm-home-category-heading span{font-size:11px;letter-spacing:2px;font-weight:800;color:#8f4a00}.pm-home-category-heading h2{font-size:clamp(19px,2vw,28px);margin:7px 0 17px;color:#231a10;font-weight:800}
+.pm-home-category-links{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}
+.pm-home-category-links button{display:flex;align-items:center;justify-content:center;gap:6px;background:#fffdf2;border:1px solid #ecbc33;border-radius:13px;padding:14px 7px;font-weight:700;font-size:12px;color:#2a2116;cursor:pointer;min-height:48px;transition:background .2s,transform .2s}
+.pm-home-category-links button:hover,.pm-home-category-links button:focus-visible{background:#fff1a7;transform:translateY(-2px)}.pm-home-category-links button[aria-pressed=true]{background:#ffb91a;border-color:#e6a000}
+.pm-professional-footer{background:linear-gradient(145deg,#251a0e,#32200c);color:#fff7db;padding:58px clamp(22px,5vw,80px) 20px;border-top:6px solid #ffd60a;position:relative;z-index:1}
+.pm-footer-inner{max-width:1380px;margin:auto;display:grid;grid-template-columns:minmax(230px,1.8fr) repeat(3,minmax(150px,1fr));gap:clamp(22px,4vw,65px)}
+.pm-footer-brand .petmeta-logo{max-width:200px}.pm-footer-brand p{max-width:340px;font-size:13px;line-height:1.7;color:#fff1c5;margin:12px 0}.pm-footer-brand .pm-footer-note{font-size:11px;color:#eacb86;line-height:1.6}
+.pm-footer-column{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.pm-footer-column h2{font-size:16px;margin:6px 0 12px;color:#ffdc56;font-weight:800}.pm-footer-column button{background:none;border:none;color:#fff7dc;font-size:13px;line-height:1.4;padding:2px 0;text-align:left;cursor:pointer}.pm-footer-column button:hover{text-decoration:underline;color:#ffd60a}
+.pm-footer-bottom{max-width:1380px;margin:42px auto 0;border-top:1px solid #80642b;padding-top:20px;display:flex;justify-content:space-between;gap:16px;font-size:12px;color:#eacb86}
+@media(max-width:1150px){.pm-home-category-links{grid-template-columns:repeat(5,minmax(0,1fr))}.pm-footer-inner{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.pm-home-category-links{grid-template-columns:repeat(2,minmax(0,1fr))}.pm-footer-inner{grid-template-columns:1fr 1fr}.pm-footer-brand{grid-column:1/-1}.pm-footer-bottom{flex-direction:column}}

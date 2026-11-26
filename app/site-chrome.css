@@ -1,0 +1,126 @@
+/* ==========================================================================
+   PetMeta shared site chrome — the navigation bar and footer used on every
+   customer page. Loaded LAST so it wins over home.css / theme-sunny.css.
+
+   Navbar: full-width (100%) glass bar, pinned to the top of the viewport,
+   logo anchored in the top-left corner.
+   ========================================================================== */
+
+:root { --pm-header-pad: clamp(10px, 1.5vw, 26px); }
+
+/* Pages other than home only borrow the `.delivery-home` styling scope.
+   display:contents means the wrapper draws nothing and never limits how far
+   the sticky header can travel. */
+.pm-site-chrome { display: contents; }
+.pm-site-chrome::before { display: none !important; }
+
+/* ---- the bar ------------------------------------------------------------ */
+.delivery-home.delivery-home .shop-header {
+  --hdr-pad: var(--pm-header-pad);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 var(--pm-header-pad) 6px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .78);
+  border-radius: 0;
+  background: linear-gradient(180deg, rgba(255, 240, 150, .9) 0%, rgba(255, 220, 72, .78) 100%);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  backdrop-filter: blur(18px) saturate(1.35);
+  box-shadow: 0 10px 32px rgba(190, 92, 0, .22), inset 0 1px 0 rgba(255, 255, 255, .96);
+}
+
+/* top row spans the whole bar; the logo is its first item = top-left corner */
+.delivery-home.delivery-home .shop-top {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 6px 0 6px;
+  justify-content: flex-start;
+}
+.delivery-home.delivery-home .shop-logo {
+  align-self: flex-start;
+  margin: 0;
+  padding-right: clamp(14px, 1.8vw, 26px);
+}
+.delivery-home.delivery-home .shop-logo img {
+  width: clamp(96px, 8.6vw, 132px);
+  height: auto;
+}
+
+.delivery-home.delivery-home .shop-nav { max-width: none; width: 100%; }
+
+/* mega menu: spans the full-width bar, square at the top where it meets it */
+.delivery-home .shop-nav .shop-mega-menu {
+  border-radius: 0 0 30px 30px;
+  border-top: 0;
+  top: 100%;
+}
+.delivery-home .shop-nav .shop-mega-menu::before { display: none; }
+
+/* anchors land below the pinned bar */
+html { scroll-padding-top: 150px; }
+.delivery-home :is(#marketplace, #shop-products, #grooming-booking, #pet-zone, #pets-discovery, #bomb-deals, #dog-breeds, #cat-breeds) { scroll-margin-top: 170px; }
+
+/* ---- mobile ------------------------------------------------------------- */
+@media (max-width: 899px) {
+  .delivery-home.delivery-home .shop-header { top: 0; width: 100%; margin: 0; border-radius: 0; padding: 0 12px 8px; }
+  .delivery-home.delivery-home .shop-top { padding: 6px 0; }
+  .delivery-home.delivery-home .shop-logo img { width: clamp(76px, 20vw, 100px); }
+  html { scroll-padding-top: 130px; }
+}
+
+/* ---- footer: same block on every page ----------------------------------- */
+.pm-professional-footer { width: 100%; margin: 0; }
+
+.pm-site-chrome[hidden] { display: none; }
+
+/* ==========================================================================
+   Product details screen — sunny theme + the shared navbar/footer
+   ========================================================================== */
+.product-details-screen {
+  --sun-ink:#3b1405; --sun-ink-2:#6a3512; --sun-orange:#ff6a00; --sun-cta:linear-gradient(90deg,#fb4f06 0%,#ff7a0a 100%);
+  --sun-glass:linear-gradient(180deg,rgba(255,252,232,.88) 0%,rgba(255,238,168,.66) 100%);
+  --sun-border:rgba(255,255,255,.78);
+  --sun-shadow-sm:0 8px 22px rgba(196,96,0,.16),inset 0 1px 0 rgba(255,255,255,.9);
+  --shop-content-width:1480px; --shop-gutter:clamp(14px,3vw,44px);
+  font-family:'Montserrat Variable',Montserrat,'Segoe UI',system-ui,sans-serif;
+  color:var(--sun-ink);
+  background:
+    radial-gradient(75vw 58vh at 108% 108%,rgba(244,84,6,.88) 0%,rgba(244,84,6,0) 62%),
+    radial-gradient(62vw 46vh at -12% 110%,rgba(253,168,4,.95) 0%,rgba(253,168,4,0) 66%),
+    radial-gradient(46vw 40vh at 106% 46%,rgba(255,146,0,.42) 0%,rgba(255,146,0,0) 70%),
+    radial-gradient(60vw 36vh at 40% -8%,rgba(255,246,130,.7) 0%,rgba(255,246,130,0) 70%),
+    linear-gradient(180deg,#ffe51c 0%,#ffd80f 50%,#fdc40b 100%) fixed;
+}
+.product-details-screen::backdrop { background: #ffd80f; }
+.product-details-screen :where(h1,h2,h3,h4,button,input,select,p,span,dd,dt,small,b,strong) { font-family: inherit; }
+.product-details-screen h1,.product-details-screen h2 { color:#43130a; }
+
+/* back / save bar under the navbar */
+.pd-backbar { max-width:1480px; margin:0 auto; padding:16px var(--shop-gutter) 0; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.pd-backbar button { display:inline-flex; align-items:center; gap:8px; padding:9px 18px; border:1px solid var(--sun-border); border-radius:999px; background:var(--sun-glass); box-shadow:var(--sun-shadow-sm); color:var(--sun-ink); font-size:13px; font-weight:700; cursor:pointer; }
+.pd-backbar button:hover { background:#fff; }
+.pd-backbar button[aria-pressed=true] { color:var(--sun-orange); }
+
+/* cards become the same glass as the home page */
+.product-details-screen :is(.pd-main-photo,.pd-story,.pd-description,.pd-price-panel,.pd-deal-strip,.pd-offers,.pd-specification,.pd-explore-tabs,.pd-explore-panel,.pd-reference-facts>span,.pd-pet-screen .pd-price-panel,.pd-pet-screen .pd-main-photo) {
+  background:var(--sun-glass); border:1px solid var(--sun-border); box-shadow:var(--sun-shadow-sm);
+}
+.product-details-screen .pd-story-mark { background:#ffe27a; color:var(--sun-orange); }
+.product-details-screen .pd-eyebrow { color:var(--sun-ink-2); }
+.product-details-screen :is(.pd-description p,.pd-specification p,.pd-subtitle,.pd-price-note,.pd-preview-note,.pd-explore-panel p,.pd-brand,.pd-review) { color:var(--sun-ink-2); }
+.product-details-screen .pd-explore-tabs button { color:var(--sun-ink); }
+.product-details-screen .pd-explore-tabs button[aria-selected=true] { background:var(--sun-cta); color:#fff; box-shadow:0 8px 18px rgba(244,84,6,.32); }
+.product-details-screen .pd-actions { background:transparent; }
+.product-details-screen .pd-actions>.pd-buy,.product-details-screen .pd-actions>.pd-cart { border-radius:999px; }
+.product-details-screen .pd-actions>.pd-buy { background:var(--sun-cta); color:#fff; border-color:transparent; }
+.product-details-screen .pd-actions>.pd-buy:hover { background:linear-gradient(90deg,#e84702,#ff6c00); }
+.product-details-screen .pd-zoom { background:#fff7d0; }
+
+/* footer spacing inside the dialog */
+.product-details-screen .pm-professional-footer { margin-top:20px; }
+@media (max-width:639px) { .product-details-screen .pm-professional-footer { padding-bottom:110px; } }

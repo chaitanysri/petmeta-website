@@ -1,0 +1,22 @@
+/* Post-sign-in welcome moment (replaces the old blurry video). Same yellow backdrop as the login page. */
+.welcome-moment{position:fixed;inset:0;z-index:50;display:grid;place-items:center;overflow:hidden;color:#25261b;
+  background:radial-gradient(ellipse at 50% 42%,#fff2a0 0,#ffd500 55%,#ffc300 100%)}
+.welcome-moment:before,.welcome-moment:after{content:'';position:absolute;left:50%;top:50%;border:1px solid #fff5;border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);animation:welcome-ring 3.6s ease-out both}
+.welcome-moment:before{width:min(90vmin,760px);height:min(90vmin,760px)}
+.welcome-moment:after{width:min(130vmin,1100px);height:min(130vmin,1100px);border-color:#fff3;animation-delay:.25s}
+.welcome-body{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:24px;width:min(560px,100%)}
+.welcome-logo{width:clamp(170px,22vw,260px);height:auto;aspect-ratio:1562/1007;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(120,60,0,.28)) drop-shadow(0 1px 2px rgba(120,60,0,.35));animation:welcome-pop .7s cubic-bezier(.2,.9,.3,1.2) both}
+.welcome-cat{position:relative;width:clamp(210px,30vmin,300px);height:clamp(210px,30vmin,300px);margin-top:4px;filter:drop-shadow(0 14px 14px #8c5f001d);animation:welcome-pop .8s .15s cubic-bezier(.2,.9,.3,1.2) both}
+.welcome-title{font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:6px;animation:welcome-rise .6s .45s ease-out both}
+.welcome-sub{font-size:clamp(14px,1.6vw,17px);margin-top:8px;color:#5d4a15;animation:welcome-rise .6s .6s ease-out both}
+.welcome-progress{width:min(240px,60vw);height:6px;border-radius:99px;background:#fff6;margin-top:22px;overflow:hidden;animation:welcome-rise .6s .7s ease-out both}
+.welcome-progress span{display:block;height:100%;border-radius:inherit;background:#25261b;transform-origin:left;transform:scaleX(0);animation:welcome-fill var(--welcome-ms,2600ms) linear forwards;animation-play-state:paused}
+.welcome-moment[data-ready=true] .welcome-progress span{animation-play-state:running}
+.welcome-skip{position:absolute;top:max(18px,env(safe-area-inset-top));right:max(18px,env(safe-area-inset-right));z-index:2;display:inline-flex;align-items:center;gap:7px;padding:10px 16px;border-radius:99px;background:#25261bcc;color:#fff;font-size:13px;font-weight:600;backdrop-filter:blur(6px)}
+.welcome-skip:hover{background:#25261b}
+@keyframes welcome-pop{from{opacity:0;transform:translateY(14px) scale(.85)}to{opacity:1;transform:none}}
+@keyframes welcome-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes welcome-fill{to{transform:scaleX(1)}}
+@keyframes welcome-ring{from{opacity:0;transform:translate(-50%,-50%) scale(.6)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@media(max-height:560px){.welcome-logo{width:130px}.welcome-cat{width:150px;height:150px}.welcome-title{font-size:22px}.welcome-progress{margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.welcome-moment:before,.welcome-moment:after,.welcome-logo,.welcome-cat,.welcome-title,.welcome-sub,.welcome-progress{animation:none}}

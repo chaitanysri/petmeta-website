@@ -1,0 +1,65 @@
+/* PetMeta shared sunny visual language: isolated to customer marketplace pages. */
+.pet-directory {
+  --pm-gold:#ffd60a; --pm-orange:#ff7408; --pm-ink:#351c09;
+  background: radial-gradient(ellipse at 88% 18%,#ffea74 0,transparent 38%),linear-gradient(145deg,#ffd60a 0%,#ffe548 48%,#ffd00a 100%);
+  min-height:100vh;color:var(--pm-ink);font-family:'Montserrat Variable',Montserrat,'Segoe UI',sans-serif;
+}
+.pet-directory :where(h1,h2,h3,button,input,select,a){font-family:inherit}
+.pet-directory-header {
+  position:relative;z-index:3;height:auto;min-height:78px;margin:12px clamp(12px,2.1vw,34px) 0;
+  padding:10px clamp(15px,2.5vw,38px);border:1.5px solid rgba(255,255,255,.88);
+  border-radius:60px;background:linear-gradient(115deg,rgba(255,253,231,.94),rgba(255,244,188,.83));
+  box-shadow:0 9px 26px rgba(142,84,0,.13),inset 0 1px rgba(255,255,255,.9);
+  gap:20px;
+}
+.pet-directory-logo img{width:132px;height:62px;object-fit:contain;}
+.pet-directory-topnav{display:flex;align-items:center;justify-content:center;flex:1;gap:clamp(10px,1.7vw,28px)}
+.pet-directory-header .pet-directory-topnav>a{font-size:13px;font-weight:700;color:#43230f;text-decoration:none;white-space:nowrap;padding:10px 0}
+.pet-directory-topnav>a:hover,.pet-directory-topnav>a[aria-current=page]{color:#e85a00}
+.pet-directory-quicknav{display:flex;align-items:center;gap:9px!important}
+.pet-directory-header .pet-directory-quicknav>a,.pet-directory-header .pet-directory-quicknav>button {
+ background:rgba(255,255,255,.72);border:1px solid rgba(214,154,38,.24);border-radius:40px;
+ padding:11px 15px;color:#4b2c0d;font-size:12px;white-space:nowrap;
+}
+.pet-directory-header .pet-directory-quicknav>button[aria-pressed=true]{background:#ffe87c;border-color:#f7ae21}
+.pet-directory-main{max-width:1600px;padding-bottom:70px}
+.pet-directory-breadcrumb{color:#67420f}
+.pet-directory-breadcrumb span:last-child{color:#3e260a}
+.pet-directory-eyebrow{color:#805014;font-weight:800}
+.pet-directory h1{color:#33200c;font-weight:800;letter-spacing:-2.6px}
+.pet-directory-intro p,.pet-directory-results-heading>p{color:#69502e}
+.pet-directory-intro-paw{color:#f5a600;opacity:.8}
+.pet-directory-categories{border-color:rgba(160,94,0,.2)}
+.pet-directory-categories>a,.pet-directory-filters label,.pet-directory-card {
+ background:linear-gradient(160deg,rgba(255,255,245,.92),rgba(255,247,211,.85));
+ border:1px solid rgba(255,255,255,.92);box-shadow:0 8px 20px rgba(176,99,0,.10);border-radius:19px;
+}
+.pet-directory-categories>a{padding:10px 13px;gap:12px}
+.pet-directory-categories>a:hover{border-color:#fa9d28;box-shadow:0 12px 24px rgba(202,96,0,.17)}
+.pet-directory-categories>a[aria-current=page]{background:#ffed9f;border-color:#ff8e0a}
+.pet-directory-categories .discovery-icon{border-radius:12px}
+.pet-directory-filters label{border-radius:16px;background:rgba(255,252,232,.9)}
+.pet-directory-filters input,.pet-directory-filters select{background:transparent;color:#3b250e}
+.pet-directory-search input::placeholder{color:#9a815e}
+.pet-directory-card{overflow:hidden;border-radius:22px}
+.pet-directory-card:hover{box-shadow:0 18px 32px rgba(166,86,0,.2)}
+.pet-directory-photo{background:#fff4cb}
+.pet-directory-card-copy{background:linear-gradient(170deg,#fffceb,#fff3cc)}
+.pet-directory-card-copy b{color:#b83e00}
+.pet-directory-details{color:#a13b00;border-top-color:#edce83}
+.pet-directory-load,.pet-directory-empty button{background:#ff790a;border-color:#ff790a;color:white;border-radius:35px}
+.pet-directory-load>span{color:#fff4df}
+.pet-directory-note,.pet-directory-result-meta p{color:#6e5226}
+.pet-directory-footer{background:rgba(255,249,206,.88);color:#67431d;border-top:1px solid rgba(180,95,0,.2)}
+.pet-directory-footer>a{color:#a44700}
+/* Homepage footer: always visible, responsive, and matched to the golden theme. */
+.delivery-home .shop-newsletter{background:linear-gradient(115deg,#fff1a5,#ffdf56)!important;border-top:1px solid #ffecb4;color:#3b1c07}
+.delivery-home .shop-footer{background:linear-gradient(150deg,#432109,#271309)!important;color:#fff2d3;border-top:4px solid #ff8300}
+.delivery-home .shop-footer-grid{max-width:1400px;margin-inline:auto}
+.delivery-home .shop-footer-grid b{color:#ffde66}
+.delivery-home .shop-footer-grid button{color:#f5e7ce;transition:color .15s ease}
+.delivery-home .shop-footer-grid button:hover{color:#ffb335}
+.delivery-home .shop-footer-bottom{border-top-color:#876036}
+@media(max-width:1160px){.pet-directory-topnav{gap:12px}.pet-directory-header .pet-directory-topnav>a{font-size:11px}.pet-directory-logo img{width:105px}}
+@media(max-width:900px){.pet-directory-topnav{display:none!important}.pet-directory-header{min-height:65px}.pet-directory-main{padding-top:3px}}
+@media(max-width:560px){.pet-directory-header{border-radius:26px;margin:9px 10px 0;padding:8px 12px}.pet-directory-logo img{width:90px;height:50px}.pet-directory-header .pet-directory-quicknav>a,.pet-directory-header .pet-directory-quicknav>button{padding:9px}.pet-directory-quicknav>a span{display:none}.pet-directory-main{padding-bottom:35px}.pet-directory h1{letter-spacing:-1.4px}.pet-directory-categories>a{border-radius:13px}}

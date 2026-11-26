@@ -1,0 +1,74 @@
+/* Existing PetMeta storefront header, category menu and footer. */
+.delivery-home .shop-header{z-index:100}
+.delivery-home .shop-announcement{padding:7px 16px;background:#fff9e6;color:#36332a;font-size:11px;font-weight:600;line-height:1.35;letter-spacing:.02em}
+.delivery-home .shop-top{max-width:1360px;min-height:64px;padding:8px 24px;gap:clamp(10px,1.5vw,22px)}
+.delivery-home .shop-logo img{display:block;width:106px;height:auto;aspect-ratio:1562/1007;object-fit:contain;background:transparent;border:0;border-radius:0;filter:drop-shadow(0 1px 1px #af67284d)}
+.delivery-home .shop-location{flex:1 1 220px;max-width:390px;min-width:0}
+.delivery-home .shop-location-copy{flex:1;min-width:0}
+.delivery-home .shop-location-copy small{font-size:11px}
+.delivery-home .shop-location-copy b{font-size:13px}
+.delivery-home .shop-top .appointments-header,.delivery-home .partner-link,.delivery-home .shop-account>button{font-size:12px}
+
+.delivery-home .shop-nav{display:block;position:relative;max-width:1360px;min-height:52px;padding:0 20px;overflow:visible}
+.delivery-home .shop-nav-list{display:flex;width:100%;align-items:stretch;justify-content:space-between;gap:clamp(4px,1vw,16px)}
+.delivery-home .shop-nav-item{display:flex;align-items:stretch;min-width:0}
+.delivery-home .shop-nav-item>button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:52px;padding:10px clamp(8px,1.1vw,18px);border-bottom:2px solid transparent;border-radius:6px 6px 0 0;color:#202124;font-size:14px;font-weight:500;line-height:1.2;white-space:nowrap}
+.delivery-home .shop-nav-item>button:hover,.delivery-home .shop-nav-item>button[aria-expanded="true"]{background:#fff7d6;color:#202124}
+.delivery-home .shop-nav-item.is-active>button{border-bottom-color:#ffd633}
+.delivery-home .shop-nav-item>button svg{flex:none;transition:transform .18s ease}
+.delivery-home .shop-nav-item>button[aria-expanded="true"] svg{transform:rotate(180deg)}
+.shop-mobile-menu-trigger{display:none}
+
+.delivery-home .shop-mega-menu{left:20px;right:20px;padding:28px 30px;gap:clamp(18px,2vw,32px);border-radius:0 0 16px 16px;background:#fff;box-shadow:0 20px 36px #20212420;align-items:start}
+.delivery-home .shop-mega-menu.groups-3{grid-template-columns:minmax(220px,1.2fr) repeat(3,minmax(0,1fr))}
+.delivery-home .shop-mega-menu.groups-4{grid-template-columns:minmax(220px,1.2fr) repeat(4,minmax(0,1fr))}
+.delivery-home .shop-mega-intro,.delivery-home .shop-mega-group{display:flex;flex-direction:column;align-items:stretch;gap:0;min-width:0}
+.delivery-home .shop-mega-eyebrow{color:#8f7115;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.delivery-home .shop-mega-intro h2{margin:9px 0 8px;font-size:clamp(24px,2.1vw,28px);line-height:1.14;letter-spacing:-.035em}
+.delivery-home .shop-mega-intro p{margin:0 0 22px;color:#5e625b;font-size:14px;line-height:1.5}
+.delivery-home .shop-mega-menu .shop-mega-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:14px;align-self:flex-start;padding:11px 15px;border-radius:8px;background:#ffd633;color:#202124;font-size:15px;font-weight:700}
+.delivery-home .shop-mega-menu .shop-mega-cta:hover{background:#f7c817}
+.delivery-home .shop-mega-visual{width:100%;height:105px;margin-bottom:14px;border-radius:10px;background-color:#f6f4ec;background-size:cover;background-position:center;background-repeat:no-repeat}
+.delivery-home .shop-mega-group h3{margin:0 0 8px;font-size:16px;line-height:1.25;font-weight:700}
+.delivery-home .shop-mega-group>button{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;min-height:34px;padding:6px 0;color:#3e423d;font-size:13px;line-height:1.3;text-align:left}
+.delivery-home .shop-mega-group>button:hover{color:#735a00;text-decoration:underline}
+.delivery-home .shop-mega-group>button svg{flex:none}
+
+.delivery-home .shop-footer{display:block;padding-top:32px}
+.delivery-home .shop-footer-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;align-items:start}
+.delivery-home .shop-footer-grid>div>b{font-size:14px}
+.delivery-home .shop-footer-grid button{font-size:12px;line-height:1.45}
+.delivery-home .shop-footer-grid>div:first-child>button:first-of-type{color:#202124;font-weight:700;text-decoration:underline;text-decoration-color:#ffd633;text-decoration-thickness:3px;text-underline-offset:4px}
+
+@media(max-width:1060px){
+ .delivery-home .shop-top{gap:10px;padding-inline:18px}
+ .delivery-home .shop-nav{padding-inline:10px}
+ .delivery-home .shop-nav-list{gap:2px}
+ .delivery-home .shop-nav-item>button{font-size:12px;padding-inline:8px}
+ .delivery-home .shop-mega-menu{left:10px;right:10px;padding:22px;gap:18px}
+ .delivery-home .shop-mega-menu.groups-3,.delivery-home .shop-mega-menu.groups-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .delivery-home .shop-mega-intro{grid-column:1/-1}
+}
+@media(max-width:640px){
+ .delivery-home .shop-announcement{padding:6px 10px;font-size:10px}
+ .delivery-home .shop-top{gap:7px;padding:7px 10px;min-height:54px}
+ .delivery-home .shop-logo img{width:74px}
+ .delivery-home .shop-location{flex:1 1 auto}
+ .delivery-home .shop-location-copy small{font-size:8px}
+ .delivery-home .shop-location-copy b{font-size:10px}
+ .delivery-home .shop-nav{min-height:44px;padding:0 10px}
+ .delivery-home .shop-mobile-menu-trigger{display:flex;align-items:center;gap:8px;min-height:44px;width:100%;color:#202124;font-size:13px;font-weight:700}
+ .delivery-home .shop-nav-list{display:none;position:absolute;top:100%;left:0;right:0;max-height:calc(100dvh - 130px);overflow-y:auto;padding:6px 10px 16px;background:#fff;border-bottom:1px solid #e9e5d9;box-shadow:0 18px 30px #20212420}
+ .delivery-home .shop-nav-list.is-open{display:block}
+ .delivery-home .shop-nav-item{display:block}
+ .delivery-home .shop-nav-item>button{width:100%;min-height:46px;padding:9px 12px;justify-content:space-between;font-size:14px;border-bottom:1px solid #efeee7;border-radius:0}
+ .delivery-home .shop-mega-menu,.delivery-home .shop-mega-menu.groups-3,.delivery-home .shop-mega-menu.groups-4{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px;padding:18px 10px 22px;box-shadow:none;border:0;border-bottom:1px solid #e9e5d9}
+ .delivery-home .shop-mega-intro{grid-column:1/-1}
+ .delivery-home .shop-mega-intro h2{font-size:24px}
+ .delivery-home .shop-mega-intro p{margin-bottom:14px}
+ .delivery-home .shop-mega-menu .shop-mega-cta{min-height:44px}
+ .delivery-home .shop-mega-visual{height:92px}
+ .delivery-home .shop-mega-group>button{min-height:44px;font-size:12px}
+ .delivery-home .shop-footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}
+ .delivery-home .shop-footer-grid button{font-size:12px}
+}

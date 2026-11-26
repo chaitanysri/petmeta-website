@@ -1,0 +1,35 @@
+/* No highlight blocks on controls ------------------------------------------
+   Buttons, links, icons, images and the header/footer must never show the
+   blue text-selection block or a tap highlight when clicked or dragged over. */
+button,a,[role="button"],[role="tab"],[role="menuitem"],[role="link"],summary,select,
+nav,.pm-site-chrome,.shop-top,.pm-footer2,#petmeta-footer,
+button *,a *,[role="button"] *,[role="tab"] *,[role="menuitem"] *,
+svg,img,video{
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;
+}
+button::selection,a::selection,[role="button"]::selection,[role="tab"]::selection,[role="menuitem"]::selection,
+button *::selection,a *::selection,[role="button"] *::selection,
+nav *::selection,.pm-site-chrome *::selection,.shop-top *::selection,.pm-footer2 *::selection,#petmeta-footer *::selection,
+svg *::selection,img::selection{background:transparent;color:inherit}
+img,svg{-webkit-user-drag:none}
+/* Keep a ring only for keyboard users, not after a mouse click */
+button:focus:not(:focus-visible),a:focus:not(:focus-visible),[role="button"]:focus:not(:focus-visible),[tabindex]:focus:not(:focus-visible){outline:none}
+/* Text fields stay normal */
+input,textarea,[contenteditable="true"]{-webkit-user-select:text;user-select:text}
+
+/* ---- No square hover blocks -------------------------------------------------
+   home.css used to lift every button and give it a square shadow on hover; on
+   buttons without a background (heart, cart, profile, partner link, menu rows)
+   that showed up as a pale block. Hover now only changes colour. */
+.delivery-home button:hover,.delivery-home a:hover,.product-details-screen button:hover,.pm-footer2 button:hover,.pm-footer2 a:hover{translate:none;box-shadow:none}
+.delivery-home button:active,.product-details-screen button:active{translate:none}
+button:hover{filter:none}
+.delivery-home .shop-mega-group > button,.delivery-home .shop-mega-group > button:hover,.delivery-home .shop-mega-group > button:focus-visible,.delivery-home .shop-mega-group > button:active{background:transparent!important;box-shadow:none!important;translate:none!important}
+.delivery-home .shop-mega-group > button:hover,.delivery-home .shop-mega-group > button:focus-visible{color:#d84f00;text-decoration:none}
+.delivery-home .shop-mega-group > button:hover svg{transform:translateX(3px);transition:transform .15s}
+.delivery-home .shop-top .partner-link:hover,.delivery-home .shop-account > button:hover,.delivery-home .header-count:hover{background:transparent;color:#e85d00}
+.delivery-home .header-count:hover svg,.delivery-home .shop-account > button:hover{color:#e85d00}
+/* photos: no yellow inset frame when hovered */
+.product-photo:hover,.breed-photo:hover,.care-image:hover{box-shadow:none!important}
+/* account dropdown rows: colour change only */
+.delivery-home .account-menu button,.delivery-home .account-menu a{box-shadow:none!important}

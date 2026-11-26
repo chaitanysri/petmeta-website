@@ -1,0 +1,36 @@
+:root{--shop-gutter:clamp(16px,3vw,28px);--shop-section-space:clamp(24px,4vw,56px);--shop-content-width:1360px;--brand-logo-width:clamp(84px,11vw,118px)}
+.animated-auth .animated-auth-header.auth-brand-bar,.delivery-home .shop-top{width:100%;max-width:var(--shop-content-width);margin-inline:auto;padding-inline:var(--shop-gutter);padding-top:8px}
+.animated-auth .animated-auth-header .petmeta-logo,.delivery-home .shop-logo .petmeta-logo{display:block;width:var(--brand-logo-width);height:auto;aspect-ratio:1000/803;object-fit:contain;background:transparent;border:0;border-radius:0;box-shadow:none;filter:none;mix-blend-mode:normal}
+.delivery-home .shop-account>button{max-width:min(18vw,165px);min-width:0}
+.delivery-home .shop-account>button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.delivery-home :is(.shop-main,.shop-lower){width:100%;max-width:var(--shop-content-width);margin-inline:auto;padding-inline:var(--shop-gutter);background:transparent}
+.delivery-home .shop-main{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--shop-section-space);padding-block:var(--shop-section-space)}
+.delivery-home .shop-page-section{min-width:0;background:transparent;padding-inline:0;border:0;box-shadow:none}
+.delivery-home .home-discovery{background:transparent;padding:0}
+@media(max-width:520px){.delivery-home .shop-account>button{max-width:none}.delivery-home .shop-account>button span{display:none}}
+.delivery-home .account-menu button:focus-visible,.delivery-home .account-menu a:focus-visible{outline:2px solid #916f00;outline-offset:-2px}
+.delivery-home .account-menu button:first-child:not(:hover):not(:focus-visible){background:transparent;box-shadow:none}
+.delivery-home .account-menu{max-width:calc(100vw - 24px)}
+.delivery-home .shop-mega-visual{display:block;aspect-ratio:4/3;width:100%;height:auto;object-fit:cover}
+.delivery-home .shop-drawer{padding:0;border:0;margin:0 0 0 auto;width:min(440px,calc(100vw - 24px));height:100dvh;max-height:none;max-width:none;color:#202124;background:#fff}
+.delivery-home .shop-drawer[open]{animation:shop-drawer-in .2s ease-out}
+.shop-drawer::backdrop{background:#20212466}
+@keyframes shop-drawer-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.shop-drawer-inner{min-height:100%;padding:0 16px 20px}
+.shop-drawer-inner>header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;position:sticky;top:0;z-index:1;background:#fff}
+.shop-drawer-inner>header h2{font-size:19px}
+.shop-drawer-close{width:44px;height:44px;display:grid;place-items:center}
+.shop-drawer-entry>button{width:100%;min-height:49px;display:flex;align-items:center;justify-content:space-between;border-block-start:1px solid #e9e5d9;text-align:left}
+.shop-drawer-entry>button[aria-expanded=true] svg{transform:rotate(180deg)}
+.shop-drawer-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px;padding:12px 0 18px}
+.shop-drawer-details .shop-mega-intro{grid-column:1/-1}
+.shop-drawer-details .shop-mega-group button,.shop-drawer-details .shop-mega-cta{min-height:44px;text-align:left}
+@media(max-width:899px){
+ .delivery-home .shop-nav-desktop{display:none}
+ .delivery-home .shop-mobile-menu-trigger{display:flex;align-items:center;gap:8px;min-height:44px;width:100%;font-weight:700}
+ .delivery-home .shop-nav{min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){.delivery-home .shop-drawer[open]{animation:none}}
+.delivery-home .account-display-name{margin:0;padding:9px 12px;border-bottom:1px solid #efeee7;font-size:12px;font-weight:700;overflow-wrap:anywhere}
+
+.shop-drawer-details .shop-mega-cta{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;padding:0 12px;border-radius:8px;background:#ffd633;color:#202124;font-weight:700}
