@@ -1,6 +1,7 @@
 'use client';
 
 import {useEffect, useRef, useState} from 'react';
+import PointImage from './PointImage';
 import {ArrowRight, BriefcaseMedical, Bone, ChevronDown, CirclePlus, House, Leaf, Menu, PawPrint, Scissors, Ticket, Utensils, X} from 'lucide-react';
 import {shopMenus, type ShopMenuAction, type ShopMenuConfig} from '@/lib/shop-menu';
 import {useDropdown} from './useDropdown';
@@ -18,7 +19,9 @@ function MenuDetails({menu, onAction}: {menu: ShopMenuConfig; onAction: (action:
     </div>
     {menu.groups.map((group,index)=><div key={group.title} className="shop-mega-group">
       <span className="shop-mega-media">
-        <img className="shop-mega-visual" src={menu.id==='pets'?'/home/menu-pets-'+index+'.webp':'/shop-menu/'+menu.id+'-'+index+'.webp'} width={menu.id==='pets'?256:320} height={menu.id==='pets'?141:240} loading="lazy" alt=""/>
+        {menu.id==='pets'
+          ?<img className="shop-mega-visual" src={'/home/menu-pets-'+index+'.webp'} width={256} height={141} loading="lazy" alt=""/>
+          :<PointImage className="shop-mega-visual" name={menu.id+'-'+index} width={320} height={200}/>}
         <i className="shop-mega-badge" aria-hidden="true">{/care|vet|health/i.test(group.title)?<CirclePlus size={18}/>:<PawPrint size={18}/>}</i>
       </span>
       {menu.id==='pets' && ['Dogs','Cats','Other Pets'].includes(group.title) ? <button type="button" className="shop-mega-group-title-link" onClick={()=>onAction({type:'pet',pet:group.title==='Dogs'?'dog':group.title==='Cats'?'cat':'all'})}>{group.title}<ArrowRight size={15}/></button> : <h3>{group.title}</h3>}

@@ -18,6 +18,7 @@ import SiteHeader from './SiteHeader';
 import type { ShopMenuAction } from '@/lib/shop-menu';
 import {useDeals} from '@/lib/bomb-deals';
 import {storeProducts} from '@/lib/store-catalog';
+import {actionHref} from '@/lib/category-pages';
 export default function ShopFront({category,choose,query,setQuery,onNotice,onPetBrowse,locationLabel,locationOpen,onLocationClick,locationTrigger}:{category:string;choose:(s:string)=>void;query:string;setQuery:(s:string)=>void;onNotice:(s:string)=>void;onPetBrowse:(kind:string)=>void;locationLabel:string;locationOpen:boolean;onLocationClick:()=>void;locationTrigger:(node:HTMLButtonElement|null)=>void}){
  const router=useRouter();
  const {user,logout}=useAuthSession();
@@ -28,7 +29,9 @@ export default function ShopFront({category,choose,query,setQuery,onNotice,onPet
  const showMore=category!=='all'||wishOnly||!!query;
  function goHome(){setWishOnly(false);setQuery('');choose('all');window.scrollTo({top:0,behavior:'smooth'})}
  function menuAction(action:ShopMenuAction){
-  if(action.type==='category'){setQuery(action.query||'');select(action.category)}
+  const href=actionHref(action);
+  if(href)router.push(href);
+  else if(action.type==='category'){setQuery(action.query||'');select(action.category)}
   else if(action.type==='product')window.dispatchEvent(new CustomEvent('pm-open-product',{detail:action.productId}));
   else if(action.type==='pet')router.push(action.pet==='all'?'/pets':`/pets/${action.pet}`);
   else if(action.type==='appointments')window.dispatchEvent(new Event('pm-open-appointments'));
@@ -48,7 +51,7 @@ export default function ShopFront({category,choose,query,setQuery,onNotice,onPet
  <SiteHeader category={category} query={query} locationLabel={locationLabel} locationOpen={locationOpen} locationTrigger={locationTrigger} onLocationClick={onLocationClick} onMenuAction={menuAction} onHome={goHome} onNotice={onNotice} onAccountItem={t=>{if(t==='My Pets')select('pets');else{setWishOnly(true);document.getElementById('shop-products')?.scrollIntoView({behavior:'smooth'})}}} onWishlist={()=>{choose('all');setWishOnly(true);document.getElementById('shop-products')?.scrollIntoView({behavior:'smooth'})}}/>
  <HomeHero/>
  <HomeBanner onSelect={select}/>
- <section className="pm-home-category-strip" aria-label="Explore all PetMeta categories"><div className="pm-home-category-heading"><span>EXPLORE PETMETA</span><h2>Everything your pet needs, in one place.</h2></div><div className="pm-home-category-links">{[['Home','all'],['Pets','pets'],['Food','food'],['Accessories','accessories'],['Grooming','grooming'],['Veterinary','vet'],['Toys','toys'],['Health & Wellness','health'],['Offers','offers']].map(([label,id])=><button key={id} type="button" aria-pressed={category===id} onClick={()=>{if(id==='pets'){router.push('/pets');return}if(id==='all'){goHome();return}if(id==='toys'){setQuery('play');select('accessories');return}setQuery('');select(id)}}>{label}<ArrowRight size={14} aria-hidden="true"/></button>)}</div></section>
+ <section className="pm-home-category-strip" aria-label="Explore all PetMeta categories"><div className="pm-home-category-heading"><span>EXPLORE PETMETA</span><h2>Everything your pet needs, in one place.</h2></div><div className="pm-home-category-links">{[['Home','all'],['Pets','pets'],['Food','food'],['Accessories','accessories'],['Grooming','grooming'],['Veterinary','vet'],['Toys','toys'],['Health & Wellness','health'],['Offers','offers']].map(([label,id])=><button key={id} type="button" aria-pressed={category===id} onClick={()=>{if(id==='pets'){router.push('/pets');return}if(id==='all'){goHome();return}if(id==='toys'){router.push('/toys');return}if(['food','accessories','grooming','vet','health','offers'].includes(id)){router.push('/'+id);return}setQuery('');select(id)}}>{label}<ArrowRight size={14} aria-hidden="true"/></button>)}</div></section>
  <div className="shop-main"><HomeDiscovery onSelect={select} onListings={kind=>{setQuery('');setWishOnly(false);onPetBrowse(kind)}}/><BombDeals onNotice={onNotice}/>
  {showMore&&<><PhotoBreeds query={query}/><SmallPetsWeb/><BreedCollections query={query} cart={cart} add={(id,d=1)=>quantity(id,d)}/><ShopSection id="shop-products" className="shop-products-area"><div className="shop-section-title"><div><span>THOUGHTFULLY PICKED. HAPPILY PRICED.</span><h2>{wishOnly?'Your wishlist':query?`Results for “${query}”`:'Everyday love, extraordinary finds.'}</h2></div><small>Preview catalog · Prices and offers are examples</small></div>
  <div className="shop-filter-bar"><label>Budget <input type="range" min="200" max="1500" step="50" value={max} onChange={e=>setMax(+e.target.value)}/> ₹{max}</label><label>Brand <select value={brand} onChange={e=>setBrand(e.target.value)}><option>All</option><option>PetMeta</option><option>Paw Pantry</option><option>Kind Paws</option></select></label><select aria-label="Sort products" value={sort} onChange={e=>setSort(e.target.value)}><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select><button onClick={()=>{setMax(1500);setBrand('All');setQuery('');setWishOnly(false);choose('all')}}>Clear filters</button></div>
@@ -63,8 +66,8 @@ export function ShopFooter({chrome=true}:{chrome?:boolean}) {
  const [message,setMessage]=useState('');
  useEffect(()=>{const open=()=>{setPanel('Partner registration');setMessage('')};window.addEventListener('pm-partner',open);return()=>window.removeEventListener('pm-partner',open)},[]);
  const links:{heading:string;items:string[][]}[]=[
-  {heading:'Shop',items:[['All pets','/pets'],['Pet food','/home?category=food'],['Accessories','/home?category=accessories'],['Toys','/home?category=accessories&search=play'],['Offers','/home?category=offers','Sale']]},
-  {heading:'Care services',items:[['Grooming','/home?category=grooming'],['Veterinary','/home?category=vet'],['Health & wellness','/home?category=health'],['My appointments','/home?open=appointments']]},
+  {heading:'Shop',items:[['All pets','/pets'],['Pet food','/food'],['Accessories','/accessories'],['Toys','/toys'],['Offers','/offers','Sale']]},
+  {heading:'Care services',items:[['Grooming','/grooming'],['Veterinary','/vet'],['Health & wellness','/health'],['My appointments','/home?open=appointments']]},
   {heading:'Company and help',items:[['About PetMeta','/about'],['Become a partner','#partner','','Partner registration'],['Contact and support','#support','','Contact & Support'],['FAQs','#faq','','FAQs']]}
  ];
  const legal=[['Privacy policy','#privacy','Privacy Policy'],['Terms and conditions','#terms','Terms & Conditions'],['Disclaimer','#disclaimer','Disclaimer']];

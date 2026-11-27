@@ -21,6 +21,8 @@ import './site-chrome.css';
 import './amazon-product.css';
 import './footer-v2.css';
 import './about.css';
+import './category-pages.css';
+import './category-listing.css';
 import './ui-polish.css';
 import type { Metadata } from 'next';
 import Providers from '@/components/Providers';

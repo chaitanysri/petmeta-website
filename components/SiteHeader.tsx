@@ -8,6 +8,7 @@ import PetMetaLogo from './PetMetaLogo';
 import ShopMenu from './ShopMenu';
 import {useDropdown} from './useDropdown';
 import type {ShopMenuAction} from '@/lib/shop-menu';
+import {actionHref} from '@/lib/category-pages';
 
 export type SiteHeaderProps={
   /** Active category in the nav (home page only). */
@@ -54,16 +55,11 @@ export default function SiteHeader({category='all',query='',locationLabel='Choos
   const emit=(name:string,detail?:unknown)=>window.dispatchEvent(new CustomEvent(name,{detail}));
   function standaloneAction(action:ShopMenuAction){
     beforeNavigate?.();
-    if(action.type==='pet'){router.push(action.pet==='all'?'/pets':`/pets/${action.pet}`);return}
+    if(action.type==='appointments'){if(onHomePage)send('pm-open-appointments');else router.push('/home?open=appointments');return}
+    const href=actionHref(action);
+    if(href){router.push(href);return}
     if(onHomePage){emit('pm-site-action',action);return}
-    if(action.type==='category'){
-      const params=new URLSearchParams({category:action.category});
-      if(action.query)params.set('search',action.query);
-      router.push(`/home?${params.toString()}`);
-    }
-    else if(action.type==='product')router.push(`/home?product=${encodeURIComponent(action.productId)}`);
-    else if(action.type==='appointments')router.push('/home?open=appointments');
-    else router.push(`/home${action.selector.startsWith('#')?action.selector:''}`);
+    router.push(`/home${action.type==='section'&&action.selector.startsWith('#')?action.selector:''}`);
   }
   const menuAction=onMenuAction??standaloneAction;
   const goHome=onHome??(()=>{beforeNavigate?.();if(onHomePage)emit('pm-site-home');else router.push('/home')});

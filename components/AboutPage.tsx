@@ -1,14 +1,13 @@
 'use client';
 import Link from 'next/link';
-import {ArrowRight, BriefcaseMedical, CalendarCheck, HeartHandshake, Mail, MapPin, PawPrint, Scissors, Search, ShieldCheck, ShoppingBag, UtensilsCrossed} from 'lucide-react';
+import {ArrowRight, BriefcaseMedical, CalendarCheck, HeartHandshake, MapPin, PawPrint, Scissors, Search, ShieldCheck, ShoppingBag, UtensilsCrossed} from 'lucide-react';
 import SitePage from './SitePage';
-import {CONTACT} from '@/lib/site-links';
 
 const WHAT=[
   {icon:PawPrint,title:'Pets and breeds',text:'Explore dogs, cats and small pets, learn about each breed and find a companion that suits your home.',href:'/pets',cta:'Explore pets'},
-  {icon:UtensilsCrossed,title:'Food and essentials',text:'Everyday food, accessories and toys for every stage of your pet’s life, all in one place.',href:'/home?category=food',cta:'Shop essentials'},
-  {icon:Scissors,title:'Grooming',text:'Find grooming studios near you and book a session when it suits you.',href:'/home?category=grooming',cta:'Find grooming'},
-  {icon:BriefcaseMedical,title:'Veterinary and wellness',text:'Discover local vets and health and wellness care, with appointments you can keep track of.',href:'/home?category=vet',cta:'Find a vet'},
+  {icon:UtensilsCrossed,title:'Food and essentials',text:'Everyday food, accessories and toys for every stage of your pet’s life, all in one place.',href:'/food',cta:'Shop essentials'},
+  {icon:Scissors,title:'Grooming',text:'Find grooming studios near you and book a session when it suits you.',href:'/grooming',cta:'Find grooming'},
+  {icon:BriefcaseMedical,title:'Veterinary and wellness',text:'Discover local vets and health and wellness care, with appointments you can keep track of.',href:'/vet',cta:'Find a vet'},
 ];
 const STEPS=[
   {icon:Search,title:'Discover',text:'Browse pets, products and local care providers in one marketplace.'},
@@ -61,13 +60,6 @@ export default function AboutPage(){
         <div className="about-grid3">{VALUES.map(({icon:Icon,title,text})=><article className="about-value" key={title}><span className="about-icon solid"><Icon size={24}/></span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
       </section>
 
-      <section className="about-partner">
-        <div><h2>Run a pet shop, clinic or grooming studio?</h2><p>List your business on PetMeta and reach pet owners near you.</p></div>
-        <div className="about-actions">
-          <button type="button" className="about-btn dark" onClick={()=>window.dispatchEvent(new CustomEvent('pm-partner'))}>Become a partner</button>
-          <a className="about-btn ghost" href={`mailto:${CONTACT.email}`}><Mail size={17}/> {CONTACT.email}</a>
-        </div>
-      </section>
     </main>
   </SitePage>;
 }
